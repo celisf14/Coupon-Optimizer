@@ -13,12 +13,13 @@ import java.util.Map;
 
 @Service
 @AllArgsConstructor
-public class ItemFavoritesServiceImpl {
+public class ItemFavoritesServiceImpl implements ItemFavoritesService {
 
   private final ItemFavoritesRepository repository;
 
 
   @Async
+  @Override
   public void updateFavorites(Map<String, ItemDetailsDTO> listItemsDetails) {
 
     for (Map.Entry<String, ItemDetailsDTO> entry : listItemsDetails.entrySet()) {
@@ -32,15 +33,18 @@ public class ItemFavoritesServiceImpl {
     }
   }
 
+  @Override
   public ItemFavoritesEntity getItemById(String id) {
     return repository.findById(id).orElse(null);
   }
 
+  @Override
   public void incrementFavoritesCounter(ItemFavoritesEntity entity) {
     entity.setFavoritesCounter(entity.getFavoritesCounter() + 1);
     repository.save(entity);
   }
 
+  @Override
   public void saveNewItem(String itemId, ItemDetailsDTO itemDetail) {
     ItemFavoritesEntity newItem = new ItemFavoritesEntity();
     newItem.setId(itemId);
@@ -52,6 +56,7 @@ public class ItemFavoritesServiceImpl {
     repository.save(newItem);
   }
 
+  @Override
   public List<ItemFavoritesEntity> getTopFavorites(int topSize) {
     return repository.findTopByFavoritesCounter(PageRequest.of(0, topSize));
   }

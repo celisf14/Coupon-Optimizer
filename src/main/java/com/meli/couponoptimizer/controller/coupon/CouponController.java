@@ -3,7 +3,7 @@ package com.meli.couponoptimizer.controller.coupon;
 import com.meli.couponoptimizer.models.ItemDetailsResponseDTO;
 import com.meli.couponoptimizer.models.ItemRequestDTO;
 import com.meli.couponoptimizer.models.ItemResponseDTO;
-import com.meli.couponoptimizer.services.favorites.ItemFavoritesServiceImpl;
+import com.meli.couponoptimizer.services.favorites.ItemFavoritesService;
 import com.meli.couponoptimizer.services.optimizer.OptimizerServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,7 +25,7 @@ import java.util.List;
 public class CouponController {
 
   private OptimizerServices optimizerServices;
-  private ItemFavoritesServiceImpl itemFavoritesServiceImpl;
+  private ItemFavoritesService itemFavoritesService;
 
   @PostMapping
   @Operation(summary = "Optimize coupon", description = "Optimize the coupon based on provided item request")
@@ -43,13 +43,13 @@ public class CouponController {
   @GetMapping("/stats/{top}")
   @Operation(summary = "Get top favorite items", description = "Retrieve the top N favorite items")
   public ResponseEntity<Object> stats(@PathVariable int top) {
-    return ResponseEntity.ok(itemFavoritesServiceImpl.getTopFavorites(top));
+    return ResponseEntity.ok(itemFavoritesService.getTopFavorites(top));
   }
 
   @GetMapping("/stats")
   @Operation(summary = "Get top 5 favorite items", description = "Retrieve the top 5 favorite items")
   public ResponseEntity<Object> statsTop5() {
-    return ResponseEntity.ok(itemFavoritesServiceImpl.getTopFavorites(5));
+    return ResponseEntity.ok(itemFavoritesService.getTopFavorites(5));
   }
 
 }

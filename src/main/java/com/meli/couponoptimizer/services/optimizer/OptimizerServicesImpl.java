@@ -5,7 +5,7 @@ import com.meli.couponoptimizer.models.ItemDetailsDTO;
 import com.meli.couponoptimizer.models.ItemDetailsResponseDTO;
 import com.meli.couponoptimizer.models.ItemRequestDTO;
 import com.meli.couponoptimizer.models.ItemResponseDTO;
-import com.meli.couponoptimizer.services.favorites.ItemFavoritesServiceImpl;
+import com.meli.couponoptimizer.services.favorites.ItemFavoritesService;
 import com.meli.couponoptimizer.services.knapsackSolver.KnapsackSolverService;
 import com.meli.couponoptimizer.services.recoverItemData.RecoverItemDataService;
 import com.meli.couponoptimizer.util.ConstantsMsjError;
@@ -27,7 +27,7 @@ public class OptimizerServicesImpl implements OptimizerServices {
 
   private final RecoverItemDataService recoverItemDataService;
   private final KnapsackSolverService knapsackSolverServiceImpl;
-  private final ItemFavoritesServiceImpl itemFavoritesServiceImpl;
+  private final ItemFavoritesService itemFavoritesServiceImpl;
 
   @Override
   public ItemResponseDTO optimizeCoupon(ItemRequestDTO itemRequestDTO) {
