@@ -1,0 +1,35 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /Coupon-Optimizer
+spring:
+  application:
+    name: CouponOptimizer
+  datasource:
+    url: jdbc:mysql://34.67.139.142:3306/db-cupon
+    username: coupon-admin
+    password: cuponmeli2024
+    driver:
+      class: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        show-sql: true
+        format_sql: true
+        ddl-auto: update
+api:
+  base-url:
+    api-meli: https://api.mercadolibre.com/
+
+cache:
+  items:
+    ttl: 60
+    max-size: 1000
+
+AsyncConfig:
+  core-pool-size: 2
+  max-pool-size: 50
+  queue-capacity: 100
+  thread-name-prefix: async-
+
