@@ -56,7 +56,7 @@ Supongamos que tenemos los siguientes ítems y un cupón de $500:
 El solver determinará que la combinación óptima es seleccionar los ítems 1, 2, 4 y 5, maximizando el valor total a $480 sin exceder los $500 del cupón.
 
 Este algoritmo es eficiente y puede manejar listas grandes de ítems, proporcionando una solución óptima al problema de la mochila en el contexto de la maximización del uso de un cupón de compra.
-
+![Knapsack](https://i.postimg.cc/PN8jWTph/Imagen-Knapsack.png)
 ![trilateracion](https://user-images.githubusercontent.com/42285662/217925859-6bf0fc06-b179-49b5-b86b-b92535403cc2.jpeg)
 
 ### Validaciones Adicionales
