@@ -58,10 +58,14 @@ El solver determinará que la combinación óptima es seleccionar los ítems 1, 
 Este algoritmo es eficiente y puede manejar listas grandes de ítems, proporcionando una solución óptima al problema de la mochila en el contexto de la maximización del uso de un cupón de compra.
 
 
-![Knapsack]([https://i.postimg.cc/PN8jWTph/Imagen-Knapsack.png](https://postimg.cc/PN8jWTph))
+
 
 
 ![trilateracion](https://user-images.githubusercontent.com/42285662/217925859-6bf0fc06-b179-49b5-b86b-b92535403cc2.jpeg)
+
+
+
+![Knapsack](https://freeimage.host/i/dxbUALG)
 
 ### Validaciones Adicionales
 
