@@ -1,0 +1,28 @@
+# Ignorar archivos y directorios generados por Maven
+target/
+!.mvn/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Ignorar archivos de configuración de IDE
+.idea/
+*.iml
+*.iws
+.project
+.classpath
+.settings/
+
+# Ignorar archivos y directorios generados por el sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos temporales
+*.tmp
+*.log
+
+# Ignorar archivos de construcción de Gradle si se usan
+.gradle/
+build/
+
+# Ignorar archivos de configuración de otros IDEs
+.vscode/
+nbproject/
