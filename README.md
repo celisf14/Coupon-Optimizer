@@ -27,21 +27,21 @@ sujeto a:
 x_i \in \{0, 1\}
 
 donde:
-•	 v_i  es el valor del ítem  i .
-•	 p_i  es el precio del ítem  i .
-•	 C  es la capacidad del cupón.
-•	 x_i  es una variable binaria que indica si el ítem  i  es seleccionado (1) o no (0).
+	* v_i  es el valor del ítem  i .
+	* p_i  es el precio del ítem  i .
+	* C  es la capacidad del cupón.
+	* x_i  es una variable binaria que indica si el ítem  i  es seleccionado (1) o no (0).
 3.	Implementación con OR-Tools:
-•	Inicialización: Se define el modelo de optimización y las variables de decisión  x_i .
-•	Restricciones: Se agrega la restricción de capacidad, asegurando que la suma de los precios de los ítems seleccionados no exceda el monto del cupón.
-•	Función Objetivo: Se define la función objetivo para maximizar el valor total de los ítems seleccionados.
-•	Resolución: Se utiliza el solver de OR-Tools para resolver el modelo y encontrar la combinación óptima de ítems.
+	* Inicialización: Se define el modelo de optimización y las variables de decisión  x_i .
+	* Restricciones: Se agrega la restricción de capacidad, asegurando que la suma de los precios de los ítems seleccionados no exceda el monto del cupón.
+	* Función Objetivo: Se define la función objetivo para maximizar el valor total de los ítems seleccionados.
+	* Resolución: Se utiliza el solver de OR-Tools para resolver el modelo y encontrar la combinación óptima de ítems.
 4.	Proceso del Solver:
-•	Branch and Bound: El solver utiliza técnicas como el “Branch and Bound” para explorar el espacio de soluciones posibles. Este método divide el problema en subproblemas más pequeños y evalúa soluciones parciales, descartando aquellas que no pueden mejorar la solución óptima encontrada hasta el momento.
-•	Poda: Durante el proceso de búsqueda, se eliminan ramas del árbol de soluciones que no cumplen con las restricciones o que no pueden superar la solución actual.
+	* Branch and Bound: El solver utiliza técnicas como el “Branch and Bound” para explorar el espacio de soluciones posibles. Este método divide el problema en subproblemas más pequeños y evalúa soluciones parciales, descartando aquellas que no pueden mejorar la solución óptima encontrada hasta el momento.
+	* Poda: Durante el proceso de búsqueda, se eliminan ramas del árbol de soluciones que no cumplen con las restricciones o que no pueden superar la solución actual.
 5.	Resultado:
-•	El solver devuelve la combinación de ítems que maximiza el valor total sin exceder el monto del cupón.
-•	Se obtiene la lista de item_ids seleccionados y el valor total correspondiente.
+	* El solver devuelve la combinación de ítems que maximiza el valor total sin exceder el monto del cupón.
+	* Se obtiene la lista de item_ids seleccionados y el valor total correspondiente.
 
 Ejemplo Práctico
 
@@ -57,13 +57,16 @@ El solver determinará que la combinación óptima es seleccionar los ítems 1, 
 
 Este algoritmo es eficiente y puede manejar listas grandes de ítems, proporcionando una solución óptima al problema de la mochila en el contexto de la maximización del uso de un cupón de compra.
 
-![trilateracion](https://user-images.githubusercontent.com/42285662/217925859-6bf0fc06-b179-49b5-b86b-b92535403cc2.jpeg)
+
+![Imagen_Knapsack](https://github.com/user-attachments/assets/11537949-8347-4153-86b0-476d42646fbf)
+
+
 
 ### Validaciones Adicionales
 
 * optimizeCoupon: Este método es el punto de entrada para optimizar cupones. Realiza las siguientes acciones:
 
-  *	Valida la solicitud (itemRequestDTO).  
+  * Valida la solicitud (itemRequestDTO).  
   * Recupera los detalles de los ítems.    
   * Calcula el precio total de los ítems.    
   * Actualiza los ítems favoritos.    
@@ -89,7 +92,11 @@ El proceso principal de la aplicación sigue los siguientes pasos:
 	5.	Respuesta Final: Finalmente, se retorna la respuesta esperada con los resultados del proceso.
 
 
-![trilateracion](https://user-images.githubusercontent.com/42285662/217925859-6bf0fc06-b179-49b5-b86b-b92535403cc2.jpeg)
+
+![Flujo del proceso](https://github.com/user-attachments/assets/29dc6467-16a2-43eb-8317-6ae155d78ffd)
+
+
+
 
 ### Descripcion de los servicios expuestos
 
@@ -109,7 +116,7 @@ El proceso principal de la aplicación sigue los siguientes pasos:
     * Cuerpo: ItemResponseDTO
     * Descripción: Objeto que contiene el resultado de la optimización del cupón.
 
-
+#### Ejecucion Local	
     curl --location 'http://localhost:8080/Coupon-Optimizer/coupon' \
     --header 'Content-Type: application/json' \
     --data '{
@@ -120,6 +127,19 @@ El proceso principal de la aplicación sigue los siguientes pasos:
         ],
         "amount": 30000
       }'
+
+#### Ejecucion en GCP
+    curl --location 'https://couponoptimizer-430200.uc.r.appspot.com/Coupon-Optimizer/coupon' \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "item_ids": [
+            "MLC2069516100",
+            "MLC1476580369",
+            "MLC2498006388"
+        ],
+        "amount": 30000
+      }'
+
 
 * Obtener Detalles de Ítems
 
@@ -134,6 +154,8 @@ El proceso principal de la aplicación sigue los siguientes pasos:
     * Descripción: Objeto que contiene los detalles de los ítems solicitados.
 
 
+#### Ejecucion Local	
+
     curl --location 'http://localhost:8080/Coupon-Optimizer/coupon/items-details' \
     --header 'Content-Type: application/json' \
     --data '[
@@ -141,6 +163,17 @@ El proceso principal de la aplicación sigue los siguientes pasos:
         "MLC1476580369",
         "MLC2498006388"
     ]'
+
+#### Ejecucion en GCP
+
+    curl --location 'https://couponoptimizer-430200.uc.r.appspot.com/Coupon-Optimizer/coupon/items-details' \
+    --header 'Content-Type: application/json' \
+    --data '[
+        "MLC2069516100",
+        "MLC1476580369",
+        "MLC2498006388"
+    ]'
+
 
 * Obtener Top N Ítems Favoritos
 
@@ -155,9 +188,13 @@ El proceso principal de la aplicación sigue los siguientes pasos:
     * Cuerpo: Object
     * Descripción: Objeto que contiene los ítems favoritos solicitados.
 
+#### Ejecucion Local	
 
     curl --location 'http://localhost:8080/Coupon-Optimizer/coupon/stats/5' \    
+    
+#### Ejecucion en GCP
 
+    curl --location 'https://couponoptimizer-430200.uc.r.appspot.com/Coupon-Optimizer/coupon/stats/5' \    
 
 * Obtener Top 5 Ítems Favoritos
 
@@ -170,10 +207,13 @@ El proceso principal de la aplicación sigue los siguientes pasos:
     * Cuerpo: Object
     * Descripción: Objeto que contiene los 5 ítems favoritos principales.
 
+#### Ejecucion Local	
 
     curl --location 'http://localhost:8080/Coupon-Optimizer/coupon/stats' \
 
+#### Ejecucion en GCP
 
+    curl --location 'https://couponoptimizer-430200.uc.r.appspot.com/Coupon-Optimizer/coupon/stats' \
 
 ## Instalacion 
 Para hacer uso de este servicio  se puede realizar de dos formas ya que el mismo se encuentra desplegado en Google Cloud y basta con acceder endpoint dónde se encuentran cada uno de sus métodos expuestos, otra forma en la cual se pueden utilizar es Clonando el repositorio de git y desplegarlo localmente haciendo una colección de igual forma a la base de datos que se encuentra desplegada en la nube. 
